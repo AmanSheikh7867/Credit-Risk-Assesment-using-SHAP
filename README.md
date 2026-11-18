@@ -2,6 +2,8 @@
 
 An end-to-end machine learning application that estimates a loan applicant's **default probability** from personal, loan, and credit-history details. The web interface displays the estimated probability, decision threshold, and risk category.
 
+Live Link : https://credit-risk-assesment-using-shap-karu.onrender.com
+
 ## Screenshots
 
 **Applicant and loan details**
