@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Credit Risk Analyzer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- ───────────────────── Background decoration ───────────────────── -->
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+
+  <!-- ───────────────────── Main container ───────────────────── -->
+  <main class="container fade-in">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <h1>Credit Risk Analyzer</h1>
+      </div>
+      <p class="subtitle">Evaluate loan default probability with machine‑learning precision.</p>
+    </header>
+
+    <!-- ───────────────────── Form ───────────────────── -->
+    <form id="loanForm" class="card" autocomplete="off">
+      <h2 class="section-title">Applicant Details</h2>
+
+      <div class="form-grid">
+        <!-- person_age -->
+        <div class="field slide-up" style="--i:1">
+          <label for="person_age">Age</label>
+          <input type="number" id="person_age" name="person_age" min="18" max="100" placeholder="e.g. 28" required />
+        </div>
+
+        <!-- person_income -->
+        <div class="field slide-up" style="--i:2">
+          <label for="person_income">Annual Income ($)</label>
+          <input type="number" id="person_income" name="person_income" min="0" step="0.01" placeholder="e.g. 55000" required />
+        </div>
+
+        <!-- person_home_ownership -->
+        <div class="field slide-up" style="--i:3">
+          <label for="person_home_ownership">Home Ownership</label>
+          <select id="person_home_ownership" name="person_home_ownership" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="RENT">Rent</option>
+            <option value="OWN">Own</option>
+            <option value="MORTGAGE">Mortgage</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+
+        <!-- person_emp_length -->
+        <div class="field slide-up" style="--i:4">
+          <label for="person_emp_length">Employment Length (yrs)</label>
+          <input type="number" id="person_emp_length" name="person_emp_length" min="0" step="0.1" placeholder="e.g. 5" required />
+        </div>
+      </div>
+
+      <h2 class="section-title">Loan Information</h2>
+
+      <div class="form-grid">
+        <!-- loan_intent -->
+        <div class="field slide-up" style="--i:5">
+          <label for="loan_intent">Loan Intent</label>
+          <select id="loan_intent" name="loan_intent" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="PERSONAL">Personal</option>
+            <option value="EDUCATION">Education</option>
+            <option value="MEDICAL">Medical</option>
+            <option value="VENTURE">Venture</option>
+            <option value="HOMEIMPROVEMENT">Home Improvement</option>
+            <option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+          </select>
+        </div>
+
+        <!-- loan_grade -->
+        <div class="field slide-up" style="--i:6">
+          <label for="loan_grade">Loan Grade</label>
+          <select id="loan_grade" name="loan_grade" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+          </select>
+        </div>
+
+        <!-- loan_amnt -->
+        <div class="field slide-up" style="--i:7">
+          <label for="loan_amnt">Loan Amount ($)</label>
+          <input type="number" id="loan_amnt" name="loan_amnt" min="0" step="0.01" placeholder="e.g. 12000" required />
+        </div>
+
+        <!-- loan_int_rate -->
+        <div class="field slide-up" style="--i:8">
+          <label for="loan_int_rate">Interest Rate (%)</label>
+          <input type="number" id="loan_int_rate" name="loan_int_rate" min="0" max="100" step="0.01" placeholder="e.g. 11.5" required />
+        </div>
+
+        <!-- loan_percent_income -->
+        <div class="field slide-up" style="--i:9">
+          <label for="loan_percent_income">Loan % of Income</label>
+          <input type="number" id="loan_percent_income" name="loan_percent_income" min="0" max="1" step="0.01" placeholder="e.g. 0.22" required />
+        </div>
+      </div>
+
+      <h2 class="section-title">Credit History</h2>
+
+      <div class="form-grid">
+        <!-- cb_person_default_on_file -->
+        <div class="field slide-up" style="--i:10">
+          <label for="cb_person_default_on_file">Prior Default on File</label>
+          <select id="cb_person_default_on_file" name="cb_person_default_on_file" required>
+            <option value="" disabled selected>Select…</option>
+            <option value="Y">Yes</option>
+            <option value="N">No</option>
+          </select>
+        </div>
+
+        <!-- cb_person_cred_hist_length -->
+        <div class="field slide-up" style="--i:11">
+          <label for="cb_person_cred_hist_length">Credit History Length (yrs)</label>
+          <input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" min="0" placeholder="e.g. 4" required />
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" id="submitBtn" class="btn-primary slide-up" style="--i:12">
+        <span class="btn-text">Analyze Risk</span>
+        <span class="spinner hidden"></span>
+      </button>
+    </form>
+
+    <!-- ───────────────────── Results panel ───────────────────── -->
+    <section id="resultsPanel" class="card results-card hidden">
+      <h2 class="section-title">Analysis Result</h2>
+
+      <div id="resultBadge" class="result-badge"></div>
+
+      <div class="metrics-grid">
+        <div class="metric">
+          <span class="metric-label">Default Probability</span>
+          <span id="metricProbability" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Threshold</span>
+          <span id="metricThreshold" class="metric-value">—</span>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Prediction</span>
+          <span id="metricPrediction" class="metric-value">—</span>
+        </div>
+      </div>
+
+      <!-- Probability bar -->
+      <div class="prob-bar-container">
+        <div class="prob-bar-track">
+          <div id="probBarFill" class="prob-bar-fill"></div>
+          <div id="thresholdMarker" class="threshold-marker"></div>
+        </div>
+        <div class="prob-bar-labels">
+          <span>0%</span>
+          <span>100%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────────────── Error toast ───────────────────── -->
+    <div id="errorToast" class="toast hidden">
+      <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/>
+        <line x1="9" y1="9" x2="15" y2="15"/>
+      </svg>
+      <span id="errorMessage">Something went wrong.</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Credit Risk Analyzer &mdash; Powered by ML</p>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
